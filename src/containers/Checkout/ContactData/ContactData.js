@@ -31,7 +31,7 @@ class ContactData extends Component {
             .then(() => {
                 this.setState({loading: false});
                 alert('Your order has been sent!');
-                this.props.history.push('/');
+                this.props.history.push('/burgerbuilder');
             })
             .catch(error => {
                 console.log(error);

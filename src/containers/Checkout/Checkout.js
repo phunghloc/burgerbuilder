@@ -36,7 +36,7 @@ class Checkout extends Component {
     }
 
     continueHandler = () => {
-        this.props.history.replace('/checkout/contact-info');
+        this.props.history.push('/checkout/contact-info');
     }
 
     render () {
