@@ -24,8 +24,8 @@ const buildControls = (props) => {
                     key = {ctrl.label} 
                     label = {ctrl.label} 
                     type = {ctrl.type}
-                    added = {() => props.changeIngredients(ctrl.type, 1) }
-                    remove = {() => props.changeIngredients(ctrl.type, -1) }
+                    added = {() => props.addIngredients(ctrl.type) }
+                    remove = {() => props.removeIngredients(ctrl.type) }
                     disabled = {props.disableInfo[ctrl.type]}
                     amount = {props.ingredients[ctrl.type]}
                     price = {props.eachPrice[ctrl.type]}

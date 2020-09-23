@@ -6,7 +6,7 @@ import './Logo.css';
 
 const logo = () => (
     <div className="Logo">
-        <Link to='/'>
+        <Link to='/burgerbuilder'>
             <img src={burgerLogo} alt="MyBurger"/>
         </Link>
     </div>
