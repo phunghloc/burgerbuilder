@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import CheckoutSummary from '../../components/Burger/CheckoutSummary/CheckoutSummary';
@@ -37,19 +37,30 @@ class Checkout extends Component {
                 />
         );
 
+        let summary = (<Redirect to = '/' />);
+        let purchased = this.props.purchased ? <Redirect to='/burger-builder' /> : null;
+
+        if (this.props.ingredients) {
+            summary = (
+                <>
+                    <Switch>
+                        {purchased}
+                        <Route path = {this.props.match.path + '/contact-info'} 
+                            render = {() => contactData} 
+                        />
+
+                        <CheckoutSummary 
+                            ingredients = {this.props.ingredients} 
+                            cancel = {this.cancelHandler}
+                            continue = {this.continueHandler}
+                        />
+                    </Switch>
+                </>
+            )
+        }
         return (
             <div >
-                <Switch>
-                    <Route path = {this.props.match.path + '/contact-info'} 
-                        render = {() => contactData} 
-                    />
-
-                    <CheckoutSummary 
-                        ingredients = {this.props.ingredients} 
-                        cancel = {this.cancelHandler}
-                        continue = {this.continueHandler}
-                        />
-                </Switch>
+                {summary}
             </div>
         );
     }
@@ -57,8 +68,8 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
     return {
-        ingredients: state.ingredients,
-        totalPrice: state.totalPrice,
+        ingredients: state.burgerBuilder.ingredients,
+        purchased: state.order.purchased,
     }
 }
 

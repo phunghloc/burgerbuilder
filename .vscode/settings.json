@@ -8,4 +8,5 @@
     },
     "files.autoSave": "onFocusChange",
     "editor.fontSize": 18,
+    "beautify.config": "",
 }
