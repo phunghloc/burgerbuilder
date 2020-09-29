@@ -10,6 +10,9 @@ export {
     fetchOrder,
 } from './order';
 
+export {
+    auth,
+} from './auth'
 
 // TODO Reducer quản lý các global state, thay đổi các state => giống useState
 // ! Action quản lý các hành động
